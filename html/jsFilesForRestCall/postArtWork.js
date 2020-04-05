@@ -1,7 +1,7 @@
 var formData = new FormData();
 formData.append('file', $('#file')[0].files[0]); //Path of the file  
 $.ajax({
-       url : 'https://artwork.bizongo.com/library/artworks',
+       url : 'https://artworkapi.bizongo.com/library/artworks',
        type : 'POST',
        dataType: 'json',
 		headers: {

@@ -19,113 +19,102 @@
 **************************************************************************/
 -->
 <!-- <html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-<link href="../css/main_tylesheet.css" type="text/css" rel="stylesheet">
-<script src="../js/CSInterface.js"></script>
-<script>
-// var CSLibrary = new CSInterface();
-// var imageURL;
-
-// /**
-//  * This function will be called when PP's theme color been changed and it will change
-//  * extension's background color according to PP's.
-//  **/
-// function themeChangedEventListener(event)
-// {
-//     changeThemeColor();
-// }
-
-// function changeThemeColor()
-// {
-// 	var hostEnv = CSLibrary.getHostEnvironment();
-//     var UIColorObj = new UIColor();
-
-//     UIColorObj = hostEnv.appSkinInfo.appBarBackgroundColor;
-//     var red = Math.round(UIColorObj.color.red);
-//     var green = Math.round(UIColorObj.color.green);
-//     var blue = Math.round(UIColorObj.color.blue);
-//     var alpha = Math.round(UIColorObj.color.alpha);
-//     var colorRGB = "#" + red.toString(16) + green.toString(16) + blue.toString(16);
-
-//     if ("#535353" != colorRGB) /* "#535353" is the original color */
-//     {
-//         document.getElementById("index_body").style.backgroundImage = "none";
-//     }
-//     else /* for show background color distinctly */
-//     {
-//         document.getElementById("index_body").style.backgroundImage = imageURL;
-//     }
-//     document.getElementById("index_body").style.backgroundColor = colorRGB;
-//     document.getElementById("index_body").style.opacity = alpha / 255;
-// }
-
-// *
-//  * Test if the Node.js is enabled.
-//  * Append "(Disabled)" to NodeJS link if the Node.js is disabled on main frame.
-//  *
-// function checkNodeJS() {
-// 	if (typeof(require) === 'undefined') {
-// 		// Get the "naviFrame" iframe object.
-// 		var naviFarme = document.getElementById('naviFrame');
-// 		if (naviFrame) {
-// 			var naviFrameDocument = naviFarme.contentWindow ? naviFarme.contentWindow.document : naviFarme.contentDocument;
-// 			if (naviFrameDocument) {
-// 				// Find the Nodejs link.
-// 				var leftLinks = naviFrameDocument.getElementById('ul1').children;
-// 				if (leftLinks) {
-// 					for (var i = 0; i < leftLinks.length; i++) {
-// 						if ('Nodejs' === leftLinks[i].id) {
-// 							// Append "(Disabled)" to Nodejs link.
-// 							leftLinks[i].children[0].innerHTML = leftLinks[i].children[0].innerHTML + '(Disabled)';
-// 							break;
-// 						}
-// 					}
-// 				}			
-// 			}
-// 		}
-// 	} 
-// }
-
-// /**
-//  * Add eventListener to listen PP's theme change event.
-//  **/
-// window.onload = function()
-// {
-//     CSLibrary.addEventListener("com.adobe.csxs.events.ThemeColorChanged", themeChangedEventListener);
-
-//     /* store the original background image's path */
-//     imageURL = document.getElementById("index_body").style.backgroundImage;
-	
-// 	checkNodeJS();
-	
-// 	changeThemeColor();
-// };
-</script>
-</head>
-
-<body id="index_body">
-<table width="" border="0" align="center" cellpadding="0" cellspacing="0">
-    <tr>
-        <td colspan="2">
-            <iframe src="index_top.html" name="title" width="900" height="68" scrolling="no" allowtransparency="true" frameborder="0">
-            </iframe>
-        </td>
-    </tr>
-
-    <tr>
-        <td width="1000" rowspan="2" valign="top">
-            <iframe name="naviFrame" id="naviFrame" src="index_left.html" width="180" height="520" scrolling="no" frameborder="0">
-            </iframe>
-            <iframe src="https://artwork.bizongo.com/sign-up" enable-nodejs>
-            </iframe>
-        </td>
-    </tr>
-</table>
-</body>
-
+    <head>
+        <link href="../css/main_tylesheet.css" type="text/css" rel="stylesheet">
+        <script src="../js/CSInterface.js"></script>
+        <script>
+        // var CSLibrary = new CSInterface();
+        // var imageURL;
+        // /**
+        //  * This function will be called when PP's theme color been changed and it will change
+        //  * extension's background color according to PP's.
+        //  **/
+        // function themeChangedEventListener(event)
+        // {
+        //     changeThemeColor();
+        // }
+        // function changeThemeColor()
+        // {
+        //  var hostEnv = CSLibrary.getHostEnvironment();
+        //     var UIColorObj = new UIColor();
+        //     UIColorObj = hostEnv.appSkinInfo.appBarBackgroundColor;
+        //     var red = Math.round(UIColorObj.color.red);
+        //     var green = Math.round(UIColorObj.color.green);
+        //     var blue = Math.round(UIColorObj.color.blue);
+        //     var alpha = Math.round(UIColorObj.color.alpha);
+        //     var colorRGB = "#" + red.toString(16) + green.toString(16) + blue.toString(16);
+        //     if ("#535353" != colorRGB) /* "#535353" is the original color */
+        //     {
+        //         document.getElementById("index_body").style.backgroundImage = "none";
+        //     }
+        //     else /* for show background color distinctly */
+        //     {
+        //         document.getElementById("index_body").style.backgroundImage = imageURL;
+        //     }
+        //     document.getElementById("index_body").style.backgroundColor = colorRGB;
+        //     document.getElementById("index_body").style.opacity = alpha / 255;
+        // }
+        // *
+        //  * Test if the Node.js is enabled.
+        //  * Append "(Disabled)" to NodeJS link if the Node.js is disabled on main frame.
+        //  *
+        // function checkNodeJS() {
+        //  if (typeof(require) === 'undefined') {
+        //      // Get the "naviFrame" iframe object.
+        //      var naviFarme = document.getElementById('naviFrame');
+        //      if (naviFrame) {
+        //          var naviFrameDocument = naviFarme.contentWindow ? naviFarme.contentWindow.document : naviFarme.contentDocument;
+        //          if (naviFrameDocument) {
+        //              // Find the Nodejs link.
+        //              var leftLinks = naviFrameDocument.getElementById('ul1').children;
+        //              if (leftLinks) {
+        //                  for (var i = 0; i < leftLinks.length; i++) {
+        //                      if ('Nodejs' === leftLinks[i].id) {
+        //                          // Append "(Disabled)" to Nodejs link.
+        //                          leftLinks[i].children[0].innerHTML = leftLinks[i].children[0].innerHTML + '(Disabled)';
+        //                          break;
+        //                      }
+        //                  }
+        //              }
+        //          }
+        //      }
+        //  }
+        // }
+        // /**
+        //  * Add eventListener to listen PP's theme change event.
+        //  **/
+        // window.onload = function()
+        // {
+        //     CSLibrary.addEventListener("com.adobe.csxs.events.ThemeColorChanged", themeChangedEventListener);
+        //     /* store the original background image's path */
+        //     imageURL = document.getElementById("index_body").style.backgroundImage;
+        
+        //  checkNodeJS();
+        
+        //  changeThemeColor();
+        // };
+        </script>
+    </head>
+    <body id="index_body">
+        <table width="" border="0" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+                <td colspan="2">
+                    <iframe src="index_top.html" name="title" width="900" height="68" scrolling="no" allowtransparency="true" frameborder="0">
+                    </iframe>
+                </td>
+            </tr>
+            <tr>
+                <td width="1000" rowspan="2" valign="top">
+                    <iframe name="naviFrame" id="naviFrame" src="index_left.html" width="180" height="520" scrolling="no" frameborder="0">
+                    </iframe>
+                    <iframe src="https://artwork.bizongo.com/sign-up" enable-nodejs>
+                    </iframe>
+                </td>
+            </tr>
+        </table>
+    </body>
 </html>
- -->
+-->
 <html>
     <head>
         <script type="text/javascript" src="../js/JQuery/jquery.js"></script>
@@ -134,14 +123,13 @@
     </head>
     <body>
         <div data-loc="ui-infra-card" class="ant-card sc-jWBwVP khmLmA ant-card-bordered" style="padding: 20px 20px 0px; width: 100%;"><div class="ant-card-body"><form data-loc="ui-infra-login-form" class="ant-form ant-form-vertical login-form sc-iELTvK jOVRgf"><h1 class="ant-typography" style="text-align: center; margin-bottom: 32px; margin-top: 0px;">Welcome Back!</h1><div class="ant-row ant-form-item"><div class="ant-col ant-form-item-label"><label for="login_form_username" class="ant-form-item-required" title="Email Id">Email Id</label></div><div class="ant-col ant-form-item-control-wrapper"><div class="ant-form-item-control"><span class="ant-form-item-children"><input data-loc="ui-infra-login-username" type="text" id="login_form_username" data-__meta="[object Object]" data-__field="[object Object]" class="ant-input" value=""></span></div></div></div><div class="ant-row ant-form-item"><div class="ant-col ant-form-item-label"><label for="login_form_password" class="ant-form-item-required" title="Password">Password</label></div><div class="ant-col ant-form-item-control-wrapper"><div class="ant-form-item-control"><span class="ant-form-item-children"><span class="ant-input-password ant-input-affix-wrapper"><input data-loc="ui-infra-login-password" action="click" id="login_form_password" data-__meta="[object Object]" data-__field="[object Object]" type="password" class="ant-input" value=""><span class="ant-input-suffix"><i aria-label="icon: eye-invisible" tabindex="-1" class="anticon anticon-eye-invisible ant-input-password-icon"><svg viewBox="64 64 896 896" focusable="false" class="" data-icon="eye-invisible" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 0 0 0-51.5zm-63.57-320.64L836 122.88a8 8 0 0 0-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 0 0 0 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 0 0 0 11.31L155.17 889a8 8 0 0 0 11.31 0l712.15-712.12a8 8 0 0 0 0-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 0 0-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 0 1 146.2-106.69L401.31 546.2A112 112 0 0 1 396 512z"></path><path d="M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 0 0 227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 0 1-112 112z"></path></svg></i></span></span></span></div></div></div><div class="ant-row ant-form-item"><div class="ant-col ant-form-item-control-wrapper"><div class="ant-form-item-control"><span class="ant-form-item-children"><button data-loc="ui-infra-forgot-password" type="button" class="ant-btn login-form-forgot sc-cmTdod hFCgad ant-btn-link"><button type="button" class="ant-btn login-form-button ant-btn-primary ant-btn-block" onclick="login()"><span>Login</span></button></span></div></div></div></form></div></div>
-
-    
+        
     </body>
     <link href="https://ui-infra.bizongo.in/artwork-main.css" rel="stylesheet">
     <script src="jsFilesForRestCall/getLogin.js?v=6"></script>
     <script src="jsFilesForRestCall/listArtWork.js?v=3"></script>
     <script src="jsFilesForRestCall/postArtWork.js?v=4"></script>
     <script>
-        
+    
     </script>
 </html>

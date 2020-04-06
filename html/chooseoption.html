@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!--
 /*************************************************************************
@@ -128,67 +127,68 @@
 </html>
  -->
 <html>
-    <head>
-        <script type="text/javascript" src="../js/JQuery/jquery.js"></script>
-        <script src="../js/CSInterface.js"></script>
-        <script src="../js/CSInterface.js"></script>
-        
-    </head>
-    <style>
-        .loggedstatus{
+
+<head>
+    <script type="text/javascript" src="../js/JQuery/jquery.js"></script>
+    <script src="../js/CSInterface.js"></script>
+    <script src="../js/CSInterface.js"></script>
+</head>
+<style>
+    .loggedstatus{
         }
     </style>
+<span id="loggedstatus" class="loggedstatus"></span>
 
-
-    <span id="loggedstatus" class="loggedstatus"></span>
-
-    <body>
-        <div data-loc="ui-infra-card" class="ant-card sc-jWBwVP khmLmA ant-card-bordered" style="padding: 20px 20px 0px; width: 100%;"><div class="ant-card-body"><form data-loc="ui-infra-login-form" class="ant-form ant-form-vertical login-form sc-iELTvK jOVRgf"><h1 class="ant-typography" style="text-align: center; margin-bottom: 32px; margin-top: 0px;">Logged In</h1>
-
-            <div class="ant-row ant-form-item"><div class="ant-col ant-form-item-control-wrapper"><div class="ant-form-item-control"><span class="ant-form-item-children"><button onclick="uploadPDF()" class="ant-btn login-form-button ant-btn-primary ant-btn-block" id="export-pdf"><span>Upload artwork as PDF</span></button></span></div></div></div>
-
-            <div class="ant-row ant-form-item"><div class="ant-col ant-form-item-control-wrapper"><div class="ant-form-item-control"><span class="ant-form-item-children"><button onclick="uploadAI()" class="ant-btn login-form-button ant-btn-primary ant-btn-block" id="export-original"><span>Upload artwork in Original Format</span></button></span></div></div></div>
-
-
-            <div class="ant-row ant-form-item"><div class="ant-col ant-form-item-control-wrapper"><div class="ant-form-item-control"><span class="ant-form-item-children"><button onclick="openmytasks()" type="button" class="ant-btn login-form-button ant-btn-primary ant-btn-block"><span>My assigned tasks</span></button></span></div></div></div>
-
-
-
-        </form></div></div>
-
-
-        <div style="text-align: center" class="ant-row ant-form-item"><div  class="ant-col ant-form-item-control-wrapper"><div class="ant-form-item-control"><span  class="ant-form-item-children"><button style="width:20%;text-align: center" onclick="logout()" type="button" class="ant-btn login-form-button ant-btn-default ant-btn-block"><span>Log out</span></button></span></div></div></div>
-
-
-
-
-
-
-
-    
+<body>
+    <div data-loc="ui-infra-card" class="ant-card sc-jWBwVP khmLmA ant-card-bordered" style="padding: 20px 20px 0px; width: 100%;">
+        <div class="ant-card-body">
+            <form data-loc="ui-infra-login-form" class="ant-form ant-form-vertical login-form sc-iELTvK jOVRgf">
+                <h1 class="ant-typography" style="text-align: center; margin-bottom: 32px; margin-top: 0px;">Logged In</h1>
+                <div class="ant-row ant-form-item">
+                    <div class="ant-col ant-form-item-control-wrapper">
+                        <div class="ant-form-item-control"><span class="ant-form-item-children"><button onclick="uploadPDF()" class="ant-btn login-form-button ant-btn-primary ant-btn-block" id="export-pdf"><span>Upload artwork as PDF</span></button></span></div>
+                    </div>
+                </div>
+                <div class="ant-row ant-form-item">
+                    <div class="ant-col ant-form-item-control-wrapper">
+                        <div class="ant-form-item-control"><span class="ant-form-item-children"><button onclick="uploadAI()" class="ant-btn login-form-button ant-btn-primary ant-btn-block" id="export-original"><span>Upload artwork in Original Format</span></button></span></div>
+                    </div>
+                </div>
+                <div class="ant-row ant-form-item">
+                    <div class="ant-col ant-form-item-control-wrapper">
+                        <div class="ant-form-item-control"><s pan class="ant-form-item-children"><button onclick="openmytasks()" type="button" class="ant-btn login-form-button ant-btn-primary ant-btn-block"><span>My assigned tasks</span></button></span></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div style="text-align: center" class="ant-row ant-form-item">
+        <div class="ant-col ant-form-item-control-wrapper">
+            <div class="ant-form-item-control"><span class="ant-form-item-children"><button style="width:20%;text-align: center" onclick="logout()" type="button" class="ant-btn login-form-button ant-btn-default ant-btn-block"><span>Log out</span></button></span></div>
+        </div>
+    </div>
     <link href="https://ui-infra.bizongo.in/artwork-main.css" rel="stylesheet">
     <script src="jsFilesForRestCall/getLogin.js?v=5"></script>
-<!--     <script src="jsFilesForRestCall/listArtWork.js?v=2"></script>
- --> <script src="jsFilesForRestCall/postArtWork.js?v=5"></script>
+    <!--     <script src="jsFilesForRestCall/listArtWork.js?v=2"></script>
+ -->
+    <script src="jsFilesForRestCall/postArtWork.js?v=5"></script>
     <script>
-        var pdfButton = document.querySelector("#export-pdf");
-        var originalButton = document.querySelector("#export-original");
-        pdfButton.addEventListener('click', function(){exportWithType('pdf');}, false);
-        originalButton.addEventListener('click', function(){exportWithType();}, false);
+    var pdfButton = document.querySelector("#export-pdf");
+    var originalButton = document.querySelector("#export-original");
+    pdfButton.addEventListener('click', function() { exportWithType('pdf'); }, false);
+    originalButton.addEventListener('click', function() { exportWithType(); }, false);
 
 
-        var csInterface = new CSInterface();
+    var csInterface = new CSInterface();
 
-        function exportWithType(type) {
-    csInterface.evalScript(`exportFile("${type}")`, function(path) {
+    function exportWithType(type) {
+        csInterface.evalScript(`exportFile("${type}")`, function(path) {
 
-        if(path!=null)
-        alert("File saved at " + path);
-    });
-}
-
-
+            if (path != null)
+                alert("File saved at " + path);
+        });
+    }
     </script>
 </body>
-   
+
 </html>

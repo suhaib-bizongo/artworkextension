@@ -61,7 +61,26 @@ function logout() {
     setCookie("jwt", "", 1);
     window.location.href = "index.html";
 }
-// function uploadPDF(){
-// var result = window.cep.fs.showOpenDialog();
-// setCookie("file_upload_artwork", result.data)
-// }
+
+function uploadPDF() {
+    // var result = window.cep.fs.showOpenDialog();
+    // setCookie("file_upload_artwork", result.data)
+    $.ajax({
+        type: "GET",
+        url: "https://secret-crag-28491.herokuapp.com/https://artwork.bizongo.com/artwork-library",
+        beforeSend: function(xhr) {
+            xhttp.setRequestHeader("Authorization", "Bearer " + getCookie("jwt"));
+            xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        },
+        success: function(data) {
+            console.log("hello");
+            console.log(data);
+            setCookie("jwt", data.jwt_token, 1)
+            setdetails();
+        },
+        failure: function(data) {
+            console.log("helloo");
+            console.log(data);
+        }
+    });
+}

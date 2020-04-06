@@ -99,7 +99,9 @@ function logout(){
 
 
 
-function uploadartwork(){
-  console.log("hey")
-  window.location.href ='https://artwork.bizongo.com/upload-artwork'
-}
+
+// function uploadPDF(){
+
+// var result = window.cep.fs.showOpenDialog();
+// setCookie("file_upload_artwork", result.data)
+// }

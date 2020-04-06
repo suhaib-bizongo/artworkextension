@@ -42,3 +42,8 @@ function setmytasks(){
 }
 
 setmytasks();
+
+
+function back(){
+    window.location.href = "chooseoption.html"
+}

@@ -96,3 +96,10 @@ function logout(){
   window.location.href = "index.html";
 
 }
+
+
+
+function uploadartwork(){
+  console.log("hey")
+  window.location.href ='https://artwork.bizongo.com/upload-artwork'
+}

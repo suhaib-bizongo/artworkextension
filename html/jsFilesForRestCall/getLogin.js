@@ -14,7 +14,6 @@ function login(username, password){
             console.log(data);
             setCookie("jwt", data.jwt_token, 1)
 
-            alert(getCookie("jwt"))
 
             setdetails();
 
@@ -58,29 +57,7 @@ function openmytasks(){
 }
 
 
-function setmytasks(){
 
-    $.ajax({
-    type: "GET",
-    url: "https://secret-crag-28491.herokuapp.com/https://artworkapi.bizongo.com/companies/"+getCookie("company_id")+"/task_dashboard",
-    beforeSend: function (xhr) {
-    xhr.setRequestHeader ("Authorization", "Basic " + btoa($('#login_form_username').val() + ":" + $('#login_form_password').val()));
-  },
-    success: function (data){
-            console.log("hello");
-            console.log(data);
-            console.log(data)
-
-          },
-          failure : function (data){
-            console.log("helloo");
-            console.log(data);
-        
-          }
-
-})
-
-}
 
 function setdetails(){
 

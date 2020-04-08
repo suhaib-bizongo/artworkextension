@@ -33,39 +33,42 @@ pdfButton.addEventListener('click', function(){exportWithType('pdf');}, false);
 // originalButton.addEventListener('click', function(){exportWithType();}, false);
 
 function exportWithType(type) {
-	csInterface.evalScript(`exportFile("${type}")`, function(path) {
-		alert("file saved at " + path);
-		//Sending and receiving data in JSON format using POST method
-		var filePath = app.activeDocument.fullName;
-		var splitPath = filePath.toString().split('.');
-		var originalExtension = splitPath[splitPath.length-1];
-		var folderPath = filePath.toString().split('/').slice(0,-1).join('/') + '/';
-		var sanitizedFilePath = File(filePath).fsName;
+		csInterface.evalScript(`exportFile("${type}")`, function(path) {
+			alert("file saved at " + path);
 
-		var xhr = new XMLHttpRequest();
-		var url = "https://artwork-qa1-temp.s3.ap-south-1.amazonaws.com";
-		xhr.open("POST", url, true);
-		xhr.setRequestHeader("Content-Type", "application/json");
-		xhr.onreadystatechange = function () {
-		    if (xhr.readyState === 4 && xhr.status === 200) {
-		        var json = JSON.parse(xhr.responseText);
-		        console.log(json.email + ", " + json.password);
-		    }
-		};
-		var data = JSON.stringify({"key": "72a0661f-4b9f-4094-be79-5f7d4a2cbb38",
+			// var filePath = app.activeDocument.fullName;
+			// var splitPath = filePath.toString().split('.');
+			// var originalExtension = splitPath[splitPath.length-1];
+			// var folderPath = filePath.toString().split('/').slice(0,-1).join('/') + '/';
+			// var sanitizedFilePath = File(filePath).fsName;
+			var xhr = new XMLHttpRequest();
+			var url = "https://artwork-qa1-temp.s3.ap-south-1.amazonaws.com";
+			xhr.open("POST", url, true);
+			xhr.setRequestHeader("Content-Type", "application/json");
+			xhr.onreadystatechange = function () {
+			    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+			        alert(xhr.response);
+			    }
+			};
+			var formData = new FormData();
+			//TODO:: craete a file object so that we can do a post call. on that.
+			var file = "/Users/atul.aditya/Downloads/atul_a_1.pdf";
+			formData.append('file', file);
+			var data = JSON.stringify({"key": "ef2957d6-405c-425f-9227-fd1da623d103",
                 "success_action_status": "201",
-                "x-amz-meta-original-filename": "1.pdf",
+                "x-amz-meta-original-filename": "atul_a_1.pdf",
                 "Content-Type": "application/pdf",
-                "policy": "eyJleHBpcmF0aW9uIjoiMjAyMC0wNC0wN1QxOToxMjowN1oiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJhcnR3b3JrLXFhMS10ZW1wIn0seyJrZXkiOiI3MmEwNjYxZi00YjlmLTQwOTQtYmU3OS01ZjdkNGEyY2JiMzgifSx7InN1Y2Nlc3NfYWN0aW9uX3N0YXR1cyI6IjIwMSJ9LHsieC1hbXotbWV0YS1vcmlnaW5hbC1maWxlbmFtZSI6IjEucGRmIn0seyJDb250ZW50LVR5cGUiOiJhcHBsaWNhdGlvbi9wZGYifSx7IngtYW16LWNyZWRlbnRpYWwiOiJBS0lBVEM2SllZTUk2TldEWlA2Uy8yMDIwMDQwNy9hcC1zb3V0aC0xL3MzL2F3czRfcmVxdWVzdCJ9LHsieC1hbXotYWxnb3JpdGhtIjoiQVdTNC1ITUFDLVNIQTI1NiJ9LHsieC1hbXotZGF0ZSI6IjIwMjAwNDA3VDE4NDIwN1oifV19",
-                "x-amz-credential": "AKIATC6JYYMI6NWDZP6S/20200407/ap-south-1/s3/aws4_request",
+                "policy": "eyJleHBpcmF0aW9uIjoiMjAyMC0wNC0wOFQxMzowNTowNFoiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJhcnR3b3JrLXFhMS10ZW1wIn0seyJrZXkiOiJlZjI5NTdkNi00MDVjLTQyNWYtOTIyNy1mZDFkYTYyM2QxMDMifSx7InN1Y2Nlc3NfYWN0aW9uX3N0YXR1cyI6IjIwMSJ9LHsieC1hbXotbWV0YS1vcmlnaW5hbC1maWxlbmFtZSI6ImF0dWxfYV8xLnBkZiJ9LHsiQ29udGVudC1UeXBlIjoiYXBwbGljYXRpb24vcGRmIn0seyJ4LWFtei1jcmVkZW50aWFsIjoiQUtJQVRDNkpZWU1JNk5XRFpQNlMvMjAyMDA0MDgvYXAtc291dGgtMS9zMy9hd3M0X3JlcXVlc3QifSx7IngtYW16LWFsZ29yaXRobSI6IkFXUzQtSE1BQy1TSEEyNTYifSx7IngtYW16LWRhdGUiOiIyMDIwMDQwOFQxMjM1MDRaIn1dfQ==",
+                "x-amz-credential": "AKIATC6JYYMI6NWDZP6S/20200408/ap-south-1/s3/aws4_request",
                 "x-amz-algorithm": "AWS4-HMAC-SHA256",
-                "x-amz-date": "20200407T184207Z",
-                "x-amz-signature": "61ede696ca5d03e4d7987c84668437de5954c85ab41b82d3040f7d0d8eb2cd45",
-            	"file": sanitizedFilePath});
-		xhr.send(data);
-		xhr.onerror = function() {
-  			alert("Request failed");
-		};
+                "x-amz-date": "20200408T123504Z",
+                "x-amz-signature": "c3510268f0460b6de85e9edf7e3ae21ffb01533fe2c580c4aa50444f9366d8d6"
+	            	});
+			formData.append(data);
+			xhr.send(formData);
+			xhr.onerror = function() {
+	  			alert("Request failed");
+			};
 
-	});
+		});
 }

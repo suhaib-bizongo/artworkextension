@@ -44,30 +44,51 @@ function exportWithType(type) {
 			var xhr = new XMLHttpRequest();
 			var url = "https://artwork-qa1-temp.s3.ap-south-1.amazonaws.com";
 			xhr.open("POST", url, true);
-			xhr.setRequestHeader("Content-Type", "application/json");
+			//xhr.setRequestHeader("Content-Type", "application/json");
 			xhr.onreadystatechange = function () {
+				    alert("success_action_status "+xhr.response);
 			    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
 			        alert(xhr.response);
 			    }
 			};
 			var formData = new FormData();
 			//TODO:: craete a file object so that we can do a post call. on that.
-			var file = "/Users/atul.aditya/Downloads/atul_a_1.pdf";
-			formData.append('file', file);
-			var data = JSON.stringify({"key": "ef2957d6-405c-425f-9227-fd1da623d103",
+			//var file = window.cep.fs.readFile(path);
+			var file = window.cep.fs.readFile(path,cep.encoding.utf8).data;
+			//var file = File(path);
+			//alert(file); 
+			//alert(file.data);
+			// result = window.cep.fs.readFile(path, cep.encoding.utf8);
+			// var file;
+			// //alert(result.err);
+			// if (result.err === 0) {
+			// 	alert("No error");
+			// 	var base64Data = result.data;
+			// 	alert("base64Data" +base64Data);
+			// 	file = cep.encoding.convertion.b64_to_utf8(base64Data);
+			// 	alert(file);
+			// }
+			// else {
+			//  	alert("error");
+			// }
+
+			
+			var data = {"key": "d00c354e-8908-4917-b7df-9f57dca96838",
                 "success_action_status": "201",
                 "x-amz-meta-original-filename": "atul_a_1.pdf",
                 "Content-Type": "application/pdf",
-                "policy": "eyJleHBpcmF0aW9uIjoiMjAyMC0wNC0wOFQxMzowNTowNFoiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJhcnR3b3JrLXFhMS10ZW1wIn0seyJrZXkiOiJlZjI5NTdkNi00MDVjLTQyNWYtOTIyNy1mZDFkYTYyM2QxMDMifSx7InN1Y2Nlc3NfYWN0aW9uX3N0YXR1cyI6IjIwMSJ9LHsieC1hbXotbWV0YS1vcmlnaW5hbC1maWxlbmFtZSI6ImF0dWxfYV8xLnBkZiJ9LHsiQ29udGVudC1UeXBlIjoiYXBwbGljYXRpb24vcGRmIn0seyJ4LWFtei1jcmVkZW50aWFsIjoiQUtJQVRDNkpZWU1JNk5XRFpQNlMvMjAyMDA0MDgvYXAtc291dGgtMS9zMy9hd3M0X3JlcXVlc3QifSx7IngtYW16LWFsZ29yaXRobSI6IkFXUzQtSE1BQy1TSEEyNTYifSx7IngtYW16LWRhdGUiOiIyMDIwMDQwOFQxMjM1MDRaIn1dfQ==",
-                "x-amz-credential": "AKIATC6JYYMI6NWDZP6S/20200408/ap-south-1/s3/aws4_request",
+                "policy": "eyJleHBpcmF0aW9uIjoiMjAyMC0wNC0wOVQxMjoyNjoxNloiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJhcnR3b3JrLXFhMS10ZW1wIn0seyJrZXkiOiJkMDBjMzU0ZS04OTA4LTQ5MTctYjdkZi05ZjU3ZGNhOTY4MzgifSx7InN1Y2Nlc3NfYWN0aW9uX3N0YXR1cyI6IjIwMSJ9LHsieC1hbXotbWV0YS1vcmlnaW5hbC1maWxlbmFtZSI6ImF0dWxfYV8xLnBkZiJ9LHsiQ29udGVudC1UeXBlIjoiYXBwbGljYXRpb24vcGRmIn0seyJ4LWFtei1jcmVkZW50aWFsIjoiQUtJQVRDNkpZWU1JNk5XRFpQNlMvMjAyMDA0MDkvYXAtc291dGgtMS9zMy9hd3M0X3JlcXVlc3QifSx7IngtYW16LWFsZ29yaXRobSI6IkFXUzQtSE1BQy1TSEEyNTYifSx7IngtYW16LWRhdGUiOiIyMDIwMDQwOVQxMTU2MTZaIn1dfQ==",
+                "x-amz-credential": "AKIATC6JYYMI6NWDZP6S/20200409/ap-south-1/s3/aws4_request",
                 "x-amz-algorithm": "AWS4-HMAC-SHA256",
-                "x-amz-date": "20200408T123504Z",
-                "x-amz-signature": "c3510268f0460b6de85e9edf7e3ae21ffb01533fe2c580c4aa50444f9366d8d6"
-	            	});
-			formData.append(data);
+                "x-amz-date": "20200409T115616Z",
+                "x-amz-signature": "f329ae53bdfac0fc93a1df4210014fe90d63edc0e31ec5dcf0d0c92a80402315"
+	            	};
+	        Object.keys(data).forEach(key => formData.append(key, data[key]));
+	        formData.append('file', file);
+	        alert(formData);
 			xhr.send(formData);
-			xhr.onerror = function() {
-	  			alert("Request failed");
+			xhr.onerror = function(error) {
+	  			alert("Request failed "+error);
 			};
 
 		});

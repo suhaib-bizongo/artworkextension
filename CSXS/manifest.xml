@@ -40,6 +40,8 @@
                         <Parameter>--enable-speech-input</Parameter>
 						<Parameter>--enable-media-stream</Parameter>
 						<Parameter>--enable-nodejs</Parameter>
+                        <Parameter>--enable-nodejs</Parameter>
+                        <Parameter>--mixed-context</Parameter>
                     </CEFCommandLine>
                 </Resources>
                 <Lifecycle>

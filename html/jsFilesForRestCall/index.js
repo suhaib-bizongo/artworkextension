@@ -39,8 +39,8 @@ pdfButton.addEventListener(
 // originalButton.addEventListener('click', function(){exportWithType();}, false);
 
 function exportWithType(type) {
-	console.log(type);
-    csInterface.evalScript(`exportFile("${type}")`, function (path) {
+  console.log(type);
+  csInterface.evalScript(`exportFile("${type}")`, function (path) {
     console.log("file saved at " + path);
 
     // var filePath = app.activeDocument.fullName;
@@ -105,24 +105,26 @@ function exportWithType(type) {
 		
            */
 
-
-	console.log("require fs request");
-    var fs = require('fs');
-	var request = require('request');
-	//require('form-data');
-	//Node is giving error while installing , looking into it. 
-	console.log("require");
+    console.log("require fs request");
+    var fs = require("fs");
+    var request = require("request");
+    //require('form-data');
+    //Node is giving error while installing , looking into it.
+    console.log("require");
     var data = {
-		"key": "bfa3559a-5f28-43d7-87c9-011bf8e9f888",
-        "success_action_status": "201",
-		"x-amz-meta-original-filename": "atul_a_1.pdf",
-		"Content-Type": "application/pdf",
-		"policy": "eyJleHBpcmF0aW9uIjoiMjAyMC0wNC0xNFQxMTowODo0N1oiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJhcnR3b3JrLXFhMS10ZW1wIn0seyJrZXkiOiJiZmEzNTU5YS01ZjI4LTQzZDctODdjOS0wMTFiZjhlOWY4ODgifSx7InN1Y2Nlc3NfYWN0aW9uX3N0YXR1cyI6IjIwMSJ9LHsieC1hbXotbWV0YS1vcmlnaW5hbC1maWxlbmFtZSI6ImF0dWxfYV8xLnBkZiJ9LHsiQ29udGVudC1UeXBlIjoiYXBwbGljYXRpb24vcGRmIn0seyJ4LWFtei1jcmVkZW50aWFsIjoiQUtJQVRDNkpZWU1JNk5XRFpQNlMvMjAyMDA0MTQvYXAtc291dGgtMS9zMy9hd3M0X3JlcXVlc3QifSx7IngtYW16LWFsZ29yaXRobSI6IkFXUzQtSE1BQy1TSEEyNTYifSx7IngtYW16LWRhdGUiOiIyMDIwMDQxNFQxMDM4NDdaIn1dfQ==",
-		"x-amz-credential": "AKIATC6JYYMI6NWDZP6S/20200414/ap-south-1/s3/aws4_request",
-		"x-amz-algorithm": "AWS4-HMAC-SHA256",
-		"x-amz-date": "20200414T103847Z",
-		"x-amz-signature": "ce607888e6569ef2b1c052399a8b3b5d9eefb1f2659dbf694006d88879b888cf",
-       file: fs.createReadStream(path)
+      key: "bfa3559a-5f28-43d7-87c9-011bf8e9f888",
+      success_action_status: "201",
+      "x-amz-meta-original-filename": "atul_a_1.pdf",
+      "Content-Type": "application/pdf",
+      policy:
+        "eyJleHBpcmF0aW9uIjoiMjAyMC0wNC0xNFQxMTowODo0N1oiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJhcnR3b3JrLXFhMS10ZW1wIn0seyJrZXkiOiJiZmEzNTU5YS01ZjI4LTQzZDctODdjOS0wMTFiZjhlOWY4ODgifSx7InN1Y2Nlc3NfYWN0aW9uX3N0YXR1cyI6IjIwMSJ9LHsieC1hbXotbWV0YS1vcmlnaW5hbC1maWxlbmFtZSI6ImF0dWxfYV8xLnBkZiJ9LHsiQ29udGVudC1UeXBlIjoiYXBwbGljYXRpb24vcGRmIn0seyJ4LWFtei1jcmVkZW50aWFsIjoiQUtJQVRDNkpZWU1JNk5XRFpQNlMvMjAyMDA0MTQvYXAtc291dGgtMS9zMy9hd3M0X3JlcXVlc3QifSx7IngtYW16LWFsZ29yaXRobSI6IkFXUzQtSE1BQy1TSEEyNTYifSx7IngtYW16LWRhdGUiOiIyMDIwMDQxNFQxMDM4NDdaIn1dfQ==",
+      "x-amz-credential":
+        "AKIATC6JYYMI6NWDZP6S/20200414/ap-south-1/s3/aws4_request",
+      "x-amz-algorithm": "AWS4-HMAC-SHA256",
+      "x-amz-date": "20200414T103847Z",
+      "x-amz-signature":
+        "ce607888e6569ef2b1c052399a8b3b5d9eefb1f2659dbf694006d88879b888cf",
+      file: fs.createReadStream(path),
     };
     // var formData;
     // Object.keys(data).forEach(key => formData.append(key, data[key]));
@@ -141,7 +143,7 @@ function exportWithType(type) {
     request.post(
       {
         url: "https://artwork-qa1-temp.s3.ap-south-1.amazonaws.com",
-        formData: data
+        formData: data,
       },
       function optionalCallback(err, httpResponse, body) {
         if (err) {

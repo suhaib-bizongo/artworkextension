@@ -144,7 +144,7 @@
                         </div>
                     </div>
                     <div class="ant-col ant-form-item-control-wrapper">
-                        <div class="ant-form-item-control"><span class="ant-form-item-children"><button onclick="location.href = 'https://artwork.bizongo.com/upload-artwork';" type="button" class="ant-btn login-form-button ant-btn-primary ant-btn-block"><span>Upload artwork as PDF</span></button></span></div>
+                        <div class="ant-form-item-control"><span class="ant-form-item-children"><button id="export-pdf" type="button" class="ant-btn login-form-button ant-btn-primary ant-btn-block"><span>Upload artwork as PDF</span></button></span></div>
                     </div>
             </form>
         </div>
@@ -156,23 +156,10 @@
     </div>
     <link href="https://ui-infra.bizongo.in/artwork-main.css" rel="stylesheet">
     <script src="jsFilesForRestCall/getLogin.js?v=5"></script>
-    <!--     <script src="jsFilesForRestCall/listArtWork.js?v=2"></script>
-        -->
-    <script src="jsFilesForRestCall/postArtWork.js?v=5"></script>
-    <script>
-    var pdfButton = document.querySelector("#export-pdf");
-    var originalButton = document.querySelector("#export-original");
-    pdfButton.addEventListener('click', function() { exportWithType('pdf'); }, false);
-    originalButton.addEventListener('click', function() { exportWithType(); }, false);
-    var csInterface = new CSInterface();
-
-    function exportWithType(type) {
-        csInterface.evalScript(`exportFile("${type}")`, function(path) {
-            if (path != null)
-                alert("File saved at " + path);
-        });
-    }
-    </script>
+    <!--     <script src="jsFilesForRestCall/listArtWork.js?v=2"></script>-->
+    <!-- <script src="jsFilesForRestCall/postArtWork.js?v=5"></script> -->
+    <script type="text/javascript" src="jsFilesForRestCall/CSInterface.js"></script>
+    <script type="text/javascript" src="jsFilesForRestCall/index.js"></script>
 </body>
 
 </html>
